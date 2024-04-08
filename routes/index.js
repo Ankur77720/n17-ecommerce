@@ -16,5 +16,10 @@ router.get('/login', function (req, res) {
 })
 
 
+router.get('/createProduct', function (req, res) {
+  res.render('createProduct', { title: 'Create Product' });
+})
+
+
 
 module.exports = router;
