@@ -1,5 +1,7 @@
 const mongoose = require('mongoose')
 
+// TODO: connect to mongoose
+
 const userSchema = mongoose.Schema({
   username: String,
   password: String,

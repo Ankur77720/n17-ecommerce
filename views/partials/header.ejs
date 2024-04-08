@@ -1,0 +1,47 @@
+<!doctype html>
+<html>
+
+<head>
+  <meta charset='UTF-8'>
+  <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+  <script src='https://cdn.tailwindcss.com'></script>
+  <link href='https://cdn.jsdelivr.net/npm/remixicon@4.1.0/fonts/remixicon.css' rel='stylesheet' />
+  <style>
+    * {
+      margin: 0%;
+      padding: 0%;
+      box-sizing: border-box;
+    }
+
+    html,
+    body {
+      height: 100%;
+      width: 100%;
+    }
+
+    main {
+      min-height: 100%;
+    }
+
+    .products {
+      grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+      gap: 1rem;
+      row-gap: 2.5rem;
+    }
+
+    .product {
+      max-width: 350px;
+    }
+  </style>
+  <title>Shop</title>
+</head>
+
+<body class="bg-slate-200">
+  <nav class="w-100 sticky top-0">
+    <header class="drop-shadow-md w-100 flex  px-8 pr-0 justify-between items-center bg-slate-200">
+      <h1>Shop</h1>
+      <a href="/cart" class="p-4 px-8">
+        <i class="ri-shopping-cart-line"></i>
+      </a>
+    </header>
+  </nav>
