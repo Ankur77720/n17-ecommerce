@@ -1,6 +1,10 @@
 const mongoose = require('mongoose')
+const plm = require('passport-local-mongoose')
 
 // TODO: connect to mongoose
+
+
+mongoose.connect('mongodb://0.0.0.0/ecommerce')
 
 const userSchema = mongoose.Schema({
   username: String,
@@ -15,8 +19,10 @@ const userSchema = mongoose.Schema({
     type: mongoose.Schema.Types.ObjectId,
     ref: "product"
   } ],
-  
+
 })
+
+userSchema.plugin(plm)
 
 module.exports = mongoose.model('user', userSchema)
 
