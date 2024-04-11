@@ -1,0 +1,42 @@
+req.files = [
+    {
+      fieldname: 'image',
+      originalname: '9a73f23b-798f-4999-b350-2faf401fea831692079547938RegularFitRound-neckT-shirt1.jpg',
+      encoding: '7bit',
+      mimetype: 'image/jpeg',
+      destination: './public/upload',
+      filename: '022cabe42c7ddc9f6738dee84db669ab78d0b8b9.jpg',
+      path: 'public/upload/022cabe42c7ddc9f6738dee84db669ab78d0b8b9.jpg',
+      size: 45688
+    },
+    {
+      fieldname: 'image',
+      originalname: '724fc07a-db1a-4a04-9e50-e53dc3ce438f1692079548009RegularFitRound-neckT-shirt5.jpg',
+      encoding: '7bit',
+      mimetype: 'image/jpeg',
+      destination: './public/upload',
+      filename: 'af3afbfc15c368362b346e4600df46ddb1f46799.jpg',
+      path: 'public/upload/af3afbfc15c368362b346e4600df46ddb1f46799.jpg',
+      size: 142732
+    },
+    {
+      fieldname: 'image',
+      originalname: '2758a1ef-b554-4ea4-a476-11d2353740901692079547954RegularFitRound-neckT-shirt3.jpg',
+      encoding: '7bit',
+      mimetype: 'image/jpeg',
+      destination: './public/upload',
+      filename: 'd5f1fda48fec94cea6d85f48200591886d493b11.jpg',
+      path: 'public/upload/d5f1fda48fec94cea6d85f48200591886d493b11.jpg',
+      size: 25348
+    },
+    {
+      fieldname: 'image',
+      originalname: 'fb1bdee3-4a1e-4725-b133-9fec6267caed1692079547992RegularFitRound-neckT-shirt2.jpg',
+      encoding: '7bit',
+      mimetype: 'image/jpeg',
+      destination: './public/upload',
+      filename: 'f7d561e26fc023e4b1a5f4c038f0348bd84497cf.jpg',
+      path: 'public/upload/f7d561e26fc023e4b1a5f4c038f0348bd84497cf.jpg',
+      size: 46463
+    }
+  ]

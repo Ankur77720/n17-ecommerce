@@ -13,6 +13,10 @@
       box-sizing: border-box;
     }
 
+    *::-webkit-scrollbar {
+      display: none;
+    }
+
     html,
     body {
       height: 100%;
@@ -37,7 +41,7 @@
 </head>
 
 <body class="bg-slate-200">
-  <nav class="w-100 sticky top-0">
+  <nav class="w-100 sticky top-0 z-40 ">
     <header class="drop-shadow-md w-100 flex  px-8 pr-0 justify-between items-center bg-slate-200">
       <h1>Shop</h1>
       <a href="/cart" class="p-4 px-8">

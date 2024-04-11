@@ -10,8 +10,11 @@ passport.use(new localStrategy(users.authenticate()))
 const upload = require('./multer')
 
 /* GET home page. */
-router.get('/', function (req, res, next) {
-  res.render('index', { title: 'Express' });
+router.get('/', isloggedIn, async function (req, res, next) {
+
+  const allProducts = await productModel.find()
+
+  res.render('index', { title: 'Express', allProducts });
 });
 
 
@@ -87,8 +90,8 @@ router.get('/createProduct', isloggedIn, isSeller, function (req, res) {
   res.render('createProduct', { title: 'Create Product' });
 })
 
+
 router.post('/createProduct', isloggedIn, isSeller, upload.array('image'), async (req, res, next) => {
-  console.log(req.body, req.files)
 
   const newProduct = await productModel.create({
     name: req.body.name,
@@ -100,9 +103,16 @@ router.post('/createProduct', isloggedIn, isSeller, upload.array('image'), async
     })
   })
 
-  res.send(newProduct)
+  res.redirect('/')
+
+})
 
 
+
+
+
+router.get('/cart', (req, res, next) => {
+  res.render('cart')
 })
 
 
