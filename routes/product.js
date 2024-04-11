@@ -3,6 +3,7 @@ const mongoose = require('mongoose')
 const productSchema = mongoose.Schema({
     name: String,
     price: Number,
+    description: String,
     user: {
         type: mongoose.Schema.Types.ObjectId,
         ref: "user"
@@ -10,7 +11,6 @@ const productSchema = mongoose.Schema({
     images: [ {
         type: String,
     } ],
-    description: String,
 })
 
 

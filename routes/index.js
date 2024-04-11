@@ -1,11 +1,13 @@
 var express = require('express');
 var router = express.Router();
 const userModel = require('./users')
+const productModel = require('./product')
 
 var users = require('./users')
 var passport = require('passport')
 var localStrategy = require('passport-local')
 passport.use(new localStrategy(users.authenticate()))
+const upload = require('./multer')
 
 /* GET home page. */
 router.get('/', function (req, res, next) {
@@ -49,7 +51,6 @@ function isSeller(req, res, next) {
 }
 
 
-
 router.get('/login', function (req, res) {
   res.render('login', { title: 'Login' });
 })
@@ -58,10 +59,16 @@ router.get('/login', function (req, res) {
 router.post(
   '/login',
   passport.authenticate('local', {
-    successRedirect: '/',
     failureRedirect: '/login',
   }),
-  (req, res, next) => { }
+  (req, res, next) => {
+    if (req.user.accountType == 'seller') {
+      res.redirect('/createProduct')
+    }
+    else {
+      res.redirect('/')
+    }
+  }
 );
 
 
@@ -78,6 +85,24 @@ router.get('/logout', (req, res, next) => {
 
 router.get('/createProduct', isloggedIn, isSeller, function (req, res) {
   res.render('createProduct', { title: 'Create Product' });
+})
+
+router.post('/createProduct', isloggedIn, isSeller, upload.array('image'), async (req, res, next) => {
+  console.log(req.body, req.files)
+
+  const newProduct = await productModel.create({
+    name: req.body.name,
+    price: Number(req.body.price),
+    description: req.body.description,
+    user: req.user._id,
+    images: req.files.map(file => {
+      return "/upload/" + file.filename
+    })
+  })
+
+  res.send(newProduct)
+
+
 })
 
 
