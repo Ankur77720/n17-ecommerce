@@ -107,12 +107,12 @@ router.post('/createProduct', isloggedIn, isSeller, upload.array('image'), async
 
 })
 
-
-
-
-
 router.get('/cart', (req, res, next) => {
   res.render('cart')
+})
+
+router.get('/profile', (req, res, next) => {
+  res.render('profile')
 })
 
 
