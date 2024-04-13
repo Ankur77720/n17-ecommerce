@@ -107,8 +107,23 @@ router.post('/createProduct', isloggedIn, isSeller, upload.array('image'), async
 
 })
 
-router.get('/cart', (req, res, next) => {
-  res.render('cart')
+router.get('/cart', isloggedIn, async (req, res, next) => {
+  const userCart = await cartModel.findOne({
+    user: req.user._id
+  }).populate('products').populate({
+    path: "products",
+    populate: 'product'
+  })
+
+  let totalPrice = 0
+
+  userCart.products.forEach(cartProduct => {
+    totalPrice += cartProduct.product.price * (cartProduct.quantity == 0 ? 1 : cartProduct.quantity)
+  })
+
+
+
+  res.render('cart', { userCart, totalPrice })
 })
 
 router.get('/profile', (req, res, next) => {
@@ -150,6 +165,18 @@ router.get('/addToCart/:productId', isloggedIn, async (req, res, next) => {
 
   res.redirect('back')
 
+})
+
+router.post('/updateQuantity', isloggedIn, async (req, res, next) => {
+  await cartProductModel.findOneAndUpdate({ _id: req.body.cartProductId }, {
+    quantity: req.body.quantity
+  })
+  res.json({ message: "quantity updated" })
+})
+
+router.get('/remove/:cartProductId', isloggedIn, async (req, res, next) => {
+  await cartProductModel.findOneAndDelete({ _id: req.params.cartProductId })
+  res.redirect('back')
 })
 
 
